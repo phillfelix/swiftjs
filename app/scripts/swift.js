@@ -8,7 +8,8 @@
       size      : 128,
       start     : 0,
       buttons   : true,
-      bullets   : true
+      bullets   : true,
+      swipe     : false
     });
 
     var $swift = $(this).addClass('swift');
@@ -48,14 +49,14 @@
 
     var next = function (e) {
       e.preventDefault();
-      var sw_active = $swift.data('sw_active') + 1;
+      var sw_active = parseInt($swift.data('sw_active'), 10) + 1;
       if (sw_active >= $items.length) { return; }
       move(sw_active);
     };
 
     var prev = function (e) {
       e.preventDefault();
-      var sw_active = $swift.data('sw_active') - 1;
+      var sw_active = parseInt($swift.data('sw_active'), 10) - 1;
       if (sw_active < 0) { return; }
       move(sw_active);
     };
@@ -76,6 +77,11 @@
        $('<button class="swift-button-prev">prev</button>').appendTo($buttons_container).click(prev);
        $('<button class="swift-button-next">next</button>').appendTo($buttons_container).click(next);
     }
+
+    if (options.swipe) {
+      $swift.swipeLeft(next);
+      $swift.swipeRight(prev);
+    }
   };
 
-})(jQuery);
+})(Zepto);
