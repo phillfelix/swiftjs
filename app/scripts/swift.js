@@ -1,8 +1,7 @@
 (function ($) {
 
   $.fn.swift = function (options) {
-    options = options || {};
-    $.extend(options, {
+    options = $.extend({
       duration  : 0.3,
       easing    : 'ease-out',
       size      : 128,
@@ -10,7 +9,7 @@
       buttons   : true,
       bullets   : true,
       swipe     : false
-    });
+    }, options);
 
     var $swift = $(this).addClass('swift');
     var $inner = $('<div class="swift-inner"></div>').prependTo($swift);
