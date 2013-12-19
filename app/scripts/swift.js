@@ -63,9 +63,9 @@
     if (options.bullets) {
       var $bullets_container = $('<div class="swift-bullets-container"></div>').appendTo($swift);
       for (var i = 0; i < $items.length; i++) {
-        $('<span class="swift-bullet"></span>').data('index', i).appendTo($bullets_container).click(function(e){
+        $('<span class="swift-bullet" data-index="'+ i +'"></span>').appendTo($bullets_container).click(function(e){
           e.preventDefault();
-          move($(this).data('index'));
+          move(parseInt(this.dataset.index), 10);
         });
       }
       $('.swift-bullet').eq(options.start).addClass('active');
