@@ -6,6 +6,7 @@ body {
 
 .swift{
 	position: relative;
+	overflow: hidden;
 }
 .swift-inner{
 	position: relative;
